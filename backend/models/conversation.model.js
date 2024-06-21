@@ -2,16 +2,16 @@ import mongoose from "mongoose";
 
 const conversationSchema = new mongoose.Schema({
   participants: [{
-    type: mongoose.Schema.Types.ObjectId, // Corrected typo: "ObejectId" to "ObjectId"
+    type: mongoose.Schema.Types.ObjectId, 
     ref: "User",
   }],
   messages: [{
-    type: mongoose.Schema.Types.ObjectId, // Corrected typo: "ObjectId" should be within mongoose.Schema.Types
+    type: mongoose.Schema.Types.ObjectId, 
     ref: "Message",
     default: [],
   }]
 }, {
-  timestamps: true // This will add createdAt and updatedAt timestamps
+  timestamps: true 
 });
 
 const Conversation = mongoose.model("Conversation", conversationSchema);
