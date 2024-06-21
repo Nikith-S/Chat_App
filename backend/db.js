@@ -1,17 +1,21 @@
-
 import mongoose from "mongoose";
-const mongoURI= "mongodb://127.0.0.1:27017/chatapplication?directConnection=true"
- const connectToMongo= async()=>{
-    try{
-        mongoose.set("strictQuery",false)
-        mongoose.connect(mongoURI)
-        console.log("Connected successfully")
-    }
-    catch(error){
-        console.log(error)
-        process.exit();
+import dotenv from "dotenv";
 
-    }
-    };
+
+dotenv.config();
+
+
+const mongoURI = process.env.MONGO_URI;
+
+const connectToMongo = async () => {
+  try {
+    mongoose.set("strictQuery", false);
+    await mongoose.connect(mongoURI);
+    console.log("Connected successfully");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1);
+  }
+};
 
 export default connectToMongo;
